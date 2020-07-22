@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <!-- Google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300" rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+
+    <style>
+        .chart{
+            width: 900px;
+            height: 500px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<div class="chart">
+<canvas id="myChart1" width="800" height="400"></canvas>
+</div>
+<div class="chart">
+<canvas id="myChart2" width="800" height="400"></canvas>
+</div>
+<script>
+    var color1 = [
+        'rgba(155, 93, 229, 0.8)',
+        'rgba(241, 91, 181, 0.8)',
+        'rgba(254, 228, 64, 0.8)',
+        'rgba(0, 187, 249, 0.8)',
+        'rgba(0, 245, 212, 0.8)',
+    ]
+
+    var color2 = [
+        'rgba(155, 93, 229, 1)',
+        'rgba(241, 91, 181, 1)',
+        'rgba(254, 228, 64, 1)',
+        'rgba(0, 187, 249, 1)',
+        'rgba(0, 245, 212, 1)',
+    ]
+
+    var ctx = document.getElementById('myChart1').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['IL-1ra', 'IL-10', 'IL-12(p70)', 'G-CSF', 'GM-CSF', 'IFN-g', 'Hu IP-10',],
+            datasets: [
+                {
+                    label: 'pVAX-VEGF-p2A-FGF2-p2A-dsRed',
+                    data: [31.9125, 12.2225, 14.12, 48.0125, 27.415, 9.565, 114.41,],
+                    borderWidth: 1,
+                    backgroundColor: color1[0],
+                    borderColor: color2[0],
+                },
+                {
+                    label: 'pVAX-VEGF-p2A-dsRed',
+                    data: [27.8875, 10.2475, 18.0125, 35.97, 28.2825, 8.8425, 119.7425,],
+                    borderWidth: 1,
+                    backgroundColor: color1[1],
+                    borderColor: color2[1],
+                },
+                {
+                    label: 'pVAX-FGF2-p2A-dsRed',
+                    data: [8.0125, 2.9275, 13.45, 14.7, 7.6975, 5.4375, 37.8875,],
+                    borderWidth: 1,
+                    backgroundColor: color1[2],
+                    borderColor: color2[2],
+                },
+                {
+                    label: 'pVAX-dsRed',
+                    data: [6.2325, 2.5375, 8.7175, 14.7225, 6.445, 4.435, 59.995,],
+                    borderWidth: 1,
+                    backgroundColor: color1[3],
+                    borderColor: color2[3],
+                },
+                {
+                    label: 'NTC',
+                    data: [5.36333333333333, 2.65, 8.39666666666667, 10.02, 6.98333333333333, 6.95333333333333, 77.0433333333333,],
+                    borderWidth: 1,
+                    backgroundColor: color1[4],
+                    borderColor: color2[4],
+                },
+            ]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+
+
+    var ctx = document.getElementById('myChart2').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['IL-1ra', 'IL-10', 'IL-12(p70)', 'G-CSF', 'GM-CSF', 'IFN-g', 'Hu IP-10',],
+            datasets: [
+                {
+                    label: ' pVAX-VEGF-p2A-FGF2-p2A-dsRed cells',
+                    data: [57.93,30.295,241.46,77.69,85.995,393.45,39.875],
+                    borderWidth: 1,
+                    backgroundColor: color1[0],
+                    borderColor: color2[0],
+                },
+                {
+                    label: 'pVAX-VEGF-p2A-dsRed cells',
+                    data: [53.49,35.13,242.63,68.525,64.47,167.19,40.155],
+                    borderWidth: 1,
+                    backgroundColor: color1[1],
+                    borderColor: color2[1],
+                },
+                {
+                    label: 'pVAX-dsRed cells',
+                    data: [14.365,2.62,4.34,32.84,58.155,200.57,14.01],
+                    borderWidth: 1,
+                    backgroundColor: color1[2],
+                    borderColor: color2[2],
+                },
+                {
+                    label: 'pVAX-FGF2-p2A-dsRed cells',
+                    data: [40.91,3.975,7.925,86.415,66.13,238.76,25.87],
+                    borderWidth: 1,
+                    backgroundColor: color1[3],
+                    borderColor: color2[3],
+                },
+                {
+                    label: 'NTC cells',
+                    data: [16.89,2.505,4.805,30.92,61.285,156.025,12.425],
+                    borderWidth: 1,
+                    backgroundColor: color1[4],
+                    borderColor: color2[4],
+                },
+            ]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+</script>
+</body>
+</html>
