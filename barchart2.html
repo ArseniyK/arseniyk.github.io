@@ -27,61 +27,34 @@
 </div>
 <script>
     var color1 = [
-        'rgba(155, 93, 229, 0.8)',
-        'rgba(241, 91, 181, 0.8)',
-        'rgba(254, 228, 64, 0.8)',
-        'rgba(0, 187, 249, 0.8)',
-        'rgba(0, 245, 212, 0.8)',
+        'rgb(103, 183, 220)',
+        'rgb(103, 183, 220)',
+        'rgb(103, 183, 220)',
+        'rgb(103, 183, 220)',
+        'rgb(103, 183, 220)',
     ]
 
     var color2 = [
-        'rgba(155, 93, 229, 1)',
-        'rgba(241, 91, 181, 1)',
-        'rgba(254, 228, 64, 1)',
-        'rgba(0, 187, 249, 1)',
-        'rgba(0, 245, 212, 1)',
+        'rgb(103, 183, 220)',
+        'rgb(103, 183, 220)',
+        'rgb(103, 183, 220)',
+        'rgb(103, 183, 220)',
+        'rgb(103, 183, 220)',
     ]
 
     var ctx = document.getElementById('myChart1').getContext('2d');
     var myChart = new Chart(ctx, {
         type: 'bar',
+
         data: {
-            labels: ['Длина формируемых трубок',],
+            labels: ['pVax1-VEGF-FGF2-DsRed', 'pVax1-VEGF-DsRed', 'pVax1-FGF2-DsRed', 'pVax1-DsRed', 'NTC'],
             datasets: [
                 {
                     label: 'pVax1-VEGF-FGF2-DsRed',
-                    data: [18075.6666666667],
+                    data: [18075.6666666667, 16443.5, 17150.3333333333, 12456.6666666667, 10524],
                     borderWidth: 1,
                     backgroundColor: color1[0],
                     borderColor: color2[0],
-                },
-                {
-                    label: 'pVax1-VEGF-DsRed',
-                    data: [16443.5],
-                    borderWidth: 1,
-                    backgroundColor: color1[1],
-                    borderColor: color2[1],
-                },
-                {
-                    label: 'pVax1-FGF2-DsRed',
-                    data: [17150.3333333333],
-                    borderWidth: 1,
-                    backgroundColor: color1[2],
-                    borderColor: color2[2],
-                },
-                {
-                    label: 'pVax1-DsRed',
-                    data: [12456.6666666667],
-                    borderWidth: 1,
-                    backgroundColor: color1[3],
-                    borderColor: color2[3],
-                },
-                {
-                    label: 'NTC',
-                    data: [10524],
-                    borderWidth: 1,
-                    backgroundColor: color1[4],
-                    borderColor: color2[4],
                 },
             ]
         },
@@ -92,7 +65,16 @@
                         beginAtZero: true
                     }
                 }]
-            }
+            },
+            title: {
+                display: true,
+                position: 'top',
+                text: 'Длина формируемых трубок'
+            },
+            legend: {
+                display: false,
+                position: 'bottom',
+            },
         }
     });
 
@@ -100,42 +82,13 @@
     var myChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ['Количество формируемых узлов ветвления'],
+            labels: ['pVax1-VEGF-FGF2-DsRed', 'pVax1-VEGF-DsRed', 'pVax1-FGF2-DsRed', 'pVax1-DsRed', 'NTC'],
             datasets: [
                 {
-                    label: 'pVax1-VEGF-FGF2-DsRed',
-                    data: [170.333333333333],
+                    data: [170.333333333333, 133.25, 154.333333333333, 86.6666666666667, 70],
                     borderWidth: 1,
                     backgroundColor: color1[0],
                     borderColor: color2[0],
-                },
-                {
-                    label: 'pVax1-VEGF-DsRed',
-                    data: [133.25],
-                    borderWidth: 1,
-                    backgroundColor: color1[1],
-                    borderColor: color2[1],
-                },
-                {
-                    label: 'pVax1-FGF2-DsRed',
-                    data: [154.333333333333],
-                    borderWidth: 1,
-                    backgroundColor: color1[2],
-                    borderColor: color2[2],
-                },
-                {
-                    label: 'pVax1-DsRed',
-                    data: [86.6666666666667],
-                    borderWidth: 1,
-                    backgroundColor: color1[3],
-                    borderColor: color2[3],
-                },
-                {
-                    label: 'NTC',
-                    data: [70],
-                    borderWidth: 1,
-                    backgroundColor: color1[4],
-                    borderColor: color2[4],
                 },
             ]
         },
@@ -146,7 +99,16 @@
                         beginAtZero: true
                     }
                 }]
-            }
+            },
+            title: {
+                display: true,
+                position: 'top',
+                text: 'Количество формируемых узлов ветвления'
+            },
+            legend: {
+                display: false,
+                position: 'bottom',
+            },
         }
     });
 
@@ -154,42 +116,14 @@
     var myChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ['Площадь покрытия клеток'],
+            labels: ['pVax1-VEGF-FGF2-DsRed', 'pVax1-VEGF-DsRed', 'pVax1-FGF2-DsRed', 'pVax1-DsRed', 'NTC'],
             datasets: [
                 {
                     label: 'pVax1-VEGF-FGF2-DsRed',
-                    data: [15.7333333333333],
+                    data: [15.7333333333333, 16.8333333333333, 22.6, 24.05, 25.4666666666667],
                     borderWidth: 1,
                     backgroundColor: color1[0],
                     borderColor: color2[0],
-                },
-                {
-                    label: 'pVax1-VEGF-DsRed',
-                    data: [16.8333333333333],
-                    borderWidth: 1,
-                    backgroundColor: color1[1],
-                    borderColor: color2[1],
-                },
-                {
-                    label: 'pVax1-FGF2-DsRed',
-                    data: [22.6],
-                    borderWidth: 1,
-                    backgroundColor: color1[2],
-                    borderColor: color2[2],
-                },
-                {
-                    label: 'pVax1-DsRed',
-                    data: [24.05],
-                    borderWidth: 1,
-                    backgroundColor: color1[3],
-                    borderColor: color2[3],
-                },
-                {
-                    label: 'NTC',
-                    data: [25.4666666666667],
-                    borderWidth: 1,
-                    backgroundColor: color1[4],
-                    borderColor: color2[4],
                 },
             ]
         },
@@ -200,7 +134,16 @@
                         beginAtZero: true
                     }
                 }]
-            }
+            },
+            title: {
+                display: true,
+                position: 'top',
+                text: 'Площадь покрытия клеток'
+            },
+            legend: {
+                display: false,
+                position: 'bottom',
+            },
         }
     });
 </script>
