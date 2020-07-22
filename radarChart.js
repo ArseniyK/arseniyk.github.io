@@ -76,14 +76,15 @@ function RadarChart(id, data, options) {
 
 	//Wrapper for the grid & axes
 	var axisGrid = g.append("g").attr("class", "axisWrapper");
-
+	var logFormat10alt = rScale.tickFormat(10, "")
+	var ticks = rScale.ticks(10000).map(logFormat10alt ).filter((i) => {return i}).reverse();
 	//Draw the background circles
 	axisGrid.selectAll(".levels")
-	   .data(d3.range(1,(cfg.levels+1)).reverse())
+	   .data(ticks)
 	   .enter()
 		.append("circle")
 		.attr("class", "gridCircle")
-		.attr("r", function(d, i){return radius/cfg.levels*d;})
+		.attr("r", function(d, i){return rScale(d);})
 		.style("fill", "#CDCDCD")
 		.style("stroke", "#CDCDCD")
 		.style("fill-opacity", cfg.opacityCircles)
@@ -91,15 +92,15 @@ function RadarChart(id, data, options) {
 
 	//Text indicating at what % each level is
 	axisGrid.selectAll(".axisLabel")
-	   .data(d3.range(1,(cfg.levels+1)).reverse())
+	   .data(ticks)
 	   .enter().append("text")
 	   .attr("class", "axisLabel")
-	   .attr("x", 4)
-	   .attr("y", function(d){return -d*radius/cfg.levels;})
+	   .attr("x", 0)
+	   .attr("y", function(d){return -rScale(d);})
 	   .attr("dy", "0.4em")
 	   .style("font-size", "10px")
 	   .attr("fill", "#737373")
-	   .text(function(d,i) { return Format(maxValue * d/cfg.levels); });
+	   .text(function(d,i) { return Format(d); });
 
 	/////////////////////////////////////////////////////////
 	//////////////////// Draw the axes //////////////////////
