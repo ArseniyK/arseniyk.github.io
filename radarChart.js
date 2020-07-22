@@ -77,7 +77,7 @@ function RadarChart(id, data, options) {
 	//Wrapper for the grid & axes
 	var axisGrid = g.append("g").attr("class", "axisWrapper");
 	var logFormat10alt = rScale.tickFormat(10, "")
-	var ticks = rScale.ticks(10000).map(logFormat10alt ).filter((i) => {return i}).reverse();
+	var ticks = rScale.ticks().map(logFormat10alt ).map((i) => { return i >= 0.001 ? i : 0.0001}).filter((i) => {return i }).reverse();
 	//Draw the background circles
 	axisGrid.selectAll(".levels")
 	   .data(ticks)

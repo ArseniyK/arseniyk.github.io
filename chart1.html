@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/ >
+		<title></title>
+
+		<!-- Google fonts -->
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300" rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+
+		<!-- D3.js -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
+
+		<style>
+			body {
+				font-family: 'Open Sans', sans-serif;
+				font-size: 11px;
+				font-weight: 300;
+				fill: #242424;
+				text-align: center;
+				text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff, 0 -1px 0 #fff;
+				cursor: default;
+			}
+
+			.legend {
+				font-family: 'Raleway', sans-serif;
+				fill: #333333;
+			}
+
+			.brick {
+				width: 15px;
+				height: 15px;
+				margin-right: 10px;
+			}
+
+			.legends {
+				display: flex;
+				align-items: center;
+				justify-content: space-around;
+				margin: 0 auto;
+				width: 700px;
+			}
+
+			.row {
+				display: flex;
+				align-items: center;
+				justify-content: space-around;
+			}
+			.tooltip {
+				fill: #333333;
+			}
+		</style>
+
+	</head>
+	<body>
+
+		<div class="radarChart"></div>
+		<div class="legends">
+			<div class="row">
+				<div class="brick" style="background-color: #9b5de5"></div>
+				<div>pVAX-VEGF-p2A-FGF2-p2A-dsRed</div>
+			</div>
+			<div class="row">
+				<div class="brick" style="background-color: #f15bb5"></div>
+				<div>pVax1-VEGF-DsRed</div>
+			</div>
+			<div class="row">
+				<div class="brick" style="background-color: #fee440"></div>
+				<div>pVax1-FGF2-DsRed</div>
+			</div>
+			<div class="row">
+				<div class="brick" style="background-color: #00bbf9"></div>
+				<div>pVax1-DsRed</div>
+			</div>
+			<div class="row">
+				<div class="brick" style="background-color: #00f5d4"></div>
+				<div>NTC</div>
+			</div>
+		</div>
+		<div class="radarChart1"></div>
+		<div class="legends">
+			<div class="row">
+				<div class="brick" style="background-color: #9b5de5"></div>
+				<div>pVAX-VEGF-p2A-FGF2-p2A-dsRed</div>
+			</div>
+		</div>
+		<div class="radarChart2"></div>
+		<div class="legends">
+			<div class="row">
+				<div class="brick" style="background-color: #f15bb5"></div>
+				<div>pVax1-VEGF-DsRed</div>
+			</div>
+		</div>
+		<div class="radarChart3"></div>
+		<div class="legends">
+			<div class="row">
+				<div class="brick" style="background-color: #fee440"></div>
+				<div>pVax1-FGF2-DsRed</div>
+			</div>
+		</div>
+		<div class="radarChart4"></div>
+		<div class="legends">
+			<div class="row">
+				<div class="brick" style="background-color: #00bbf9"></div>
+				<div>pVax1-DsRed</div>
+			</div>
+		</div>
+		<div class="radarChart5"></div>
+		<div class="legends">
+			<div class="row">
+				<div class="brick" style="background-color: #00f5d4"></div>
+				<div>NTC</div>
+			</div>
+		</div>
+
+		<script src="radarChart.js"></script>
+		<script src="data1.js"></script>
+		<script>
+
+      /* Radar chart design created by Nadieh Bremer - VisualCinnamon.com */
+
+			//////////////////////////////////////////////////////////////
+			//////////////////////// Set-Up //////////////////////////////
+			//////////////////////////////////////////////////////////////
+
+			var margin = {top: 100, right: 100, bottom: 100, left: 100},
+				width = Math.min(900, window.innerWidth - 10) - margin.left - margin.right,
+				height = Math.min(width, window.innerHeight - margin.top - margin.bottom - 20);
+
+			//////////////////////////////////////////////////////////////
+			////////////////////////// Data //////////////////////////////
+			//////////////////////////////////////////////////////////////
+
+
+			//////////////////////////////////////////////////////////////
+			//////////////////// Draw the Chart //////////////////////////
+			//////////////////////////////////////////////////////////////
+
+	  		var colors = [
+					"#9b5de5",
+					"#f15bb5",
+					"#fee440",
+					"#00bbf9",
+					"#00f5d4",
+				];
+
+			var color = d3.scale.ordinal()
+				.range(colors);
+
+			var radarChartOptions = {
+			  w: width,
+			  h: height,
+			  labelFactor: 2.5,
+			  margin: margin,
+			  maxValue: 10000,
+			  levels: 5,
+			  roundStrokes: true,
+			  color: color
+			};
+			//Call function to draw the Radar chart
+			RadarChart(".radarChart", data, radarChartOptions);
+			RadarChart(".radarChart1", [data[0]], {...radarChartOptions, color: () => color(0) });
+			RadarChart(".radarChart2", [data[1]], {...radarChartOptions, color: () => color(1) });
+			RadarChart(".radarChart3", [data[2]], {...radarChartOptions, color: () => color(2) });
+			RadarChart(".radarChart4", [data[3]], {...radarChartOptions, color: () => color(3) });
+			RadarChart(".radarChart5", [data[4]], {...radarChartOptions, color: () => color(4) });
+		</script>
+	</body>
+</html>
