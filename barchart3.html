@@ -48,20 +48,25 @@
         type: 'bar',
 
         data: {
-            labels: ['HeK293T-VF', 'HeK293T-VEGF', 'HeK293T-DsRed', 'HeK293T-FGF-2', 'HeK293T-NTC'],
+            labels: ['pVax1-VEGF-FGF2-DsRed', 'pVax1-VEGF-DsRed', 'pVax1-FGF2-DsRed', 'pVax1-DsRed', 'NTC'],
             datasets: [
                 {
-                    data: [3629.683244371, 3530.029981648, 34.8935225829167, -35.1008634743333, 61.4848365394583,
+                    data: [
+                        1396.80535,
+                        16.731115,
+                        26.903615,
+                        1728.494015,
+                        20.123145,
                     ],
                     borderWidth: 1,
                     backgroundColor: color1[0],
                     borderColor: color2[0],
                     errorBars: {
-                        'HeK293T-VF': {plus: 125.057736658045, minus: -125.057736658045},
-                        'HeK293T-VEGF': {plus: 291.154827574891, minus: -291.154827574891},
-                        'HeK293T-DsRed': {plus: 8.10455905559877, minus: -8.10455905559877},
-                        'HeK293T-FGF-2': {plus: 28.7233933109786, minus: -28.7233933109786},
-                        'HeK293T-NTC': {plus: 3.03245383972181, minus: -3.03245383972181},
+                        'pVax1-VEGF-FGF2-DsRed': {plus: 253.347009999999, minus: 0},
+                        'pVax1-VEGF-DsRed': {plus: 12.818815, minus: 0},
+                        'pVax1-FGF2-DsRed': {plus: 22.991315, minus: 0},
+                        'pVax1-DsRed': {plus: 227.956545000001, minus: 0},
+                        'NTC': {plus: 10.320495, minus: 0},
                     }
                 },
             ]
@@ -69,16 +74,101 @@
         options: {
             scales: {
                 yAxes: [{
+                    stacked: true,
                     type: 'logarithmic',
                     ticks: {
-                        beginAtZero: false,
+                        min: 0.1, //minimum tick
+                        max: 10000, //maximum tick
+                        callback: function (value, index, values) {
+                            return Number(value.toString());
+                        }
+                    },
+                    afterBuildTicks: function (chartObj) { //Build ticks labelling as per your need
+                        chartObj.ticks = [];
+                        chartObj.ticks.push(0.1);
+                        chartObj.ticks.push(1);
+                        chartObj.ticks.push(10);
+                        chartObj.ticks.push(100);
+                        chartObj.ticks.push(1000);
+                        chartObj.ticks.push(10000);
                     }
                 }]
             },
             title: {
                 display: true,
                 position: 'top',
-                text: ''
+                text: 'Концентрация  FGF2, пг/мл'
+            },
+            legend: {
+                display: false,
+                position: 'bottom',
+            },
+            plugins: {
+                chartJsPluginErrorBars: {
+                    width: '40%',
+                    color: 'darkgray'
+                }
+            }
+        }
+    });
+
+
+    var ctx = document.getElementById('myChart2').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+
+        data: {
+            labels: ['pVax1-VEGF-FGF2-DsRed cells', 'pVax1-VEGF-DsRed cells', 'pVax1-FGF2-DsRed cells', 'pVax1-DsRed cells', 'NTC cells'],
+            datasets: [
+                {
+                    data: [
+                        11650.15236,
+                        44.33709,
+                        142.89493,
+                        1956.45056,
+                        42.83982,
+                    ],
+                    borderWidth: 1,
+                    backgroundColor: color1[0],
+                    borderColor: color2[0],
+                    errorBars: {
+                        'pVax1-VEGF-FGF2-DsRed cells': {plus: 61.2596399999973, minus: 0},
+                        'pVax1-VEGF-DsRed cells': {plus: 15.04993, minus: 0},
+                        'pVax1-FGF2-DsRed cells': {plus: 25.8043300000001, minus: 0},
+                        'pVax1-DsRed cells': {plus: 7.06841999995992, minus: 0},
+                        'NTC cells': {plus: 12.39618, minus: 0},
+                    }
+                },
+            ]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    stacked: true,
+                    type: 'logarithmic',
+                    ticks: {
+                        min: 0.1, //minimum tick
+                        max: 100000, //maximum tick
+                        callback: function (value, index, values) {
+                            return Number(value.toString());
+                        }
+                    },
+                    afterBuildTicks: function (chartObj) { //Build ticks labelling as per your need
+                        chartObj.ticks = [];
+                        chartObj.ticks.push(0.1);
+                        chartObj.ticks.push(1);
+                        chartObj.ticks.push(10);
+                        chartObj.ticks.push(100);
+                        chartObj.ticks.push(1000);
+                        chartObj.ticks.push(10000);
+                        chartObj.ticks.push(100000);
+                    }
+                }]
+            },
+            title: {
+                display: true,
+                position: 'top',
+                text: 'Концентрация  FGF2, пг/мл'
             },
             legend: {
                 display: false,
