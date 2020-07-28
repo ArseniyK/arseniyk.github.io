@@ -148,8 +148,6 @@
         ctx.lineTo(model.x + width / 2, plus);
         ctx.moveTo(model.x, plus);
         ctx.lineTo(model.x, minus);
-        ctx.moveTo(model.x - width / 2, minus);
-        ctx.lineTo(model.x + width / 2, minus);
       }
 
       ctx.stroke();

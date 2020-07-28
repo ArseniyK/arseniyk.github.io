@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <!-- Google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300" rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+    <script src="plugin.js"></script>
+
+    <style>
+        .chart{
+            width: 900px;
+            height: 500px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<div class="chart">
+<canvas id="myChart1" width="800" height="400"></canvas>
+</div>
+<div class="chart">
+<canvas id="myChart2" width="800" height="400"></canvas>
+</div>
+<div class="chart">
+<canvas id="myChart3" width="800" height="400"></canvas>
+</div>
+<script>
+    var color1 = [
+        'rgb(103, 183, 220)',
+        'rgb(103, 183, 220)',
+        'rgb(103, 183, 220)',
+        'rgb(103, 183, 220)',
+        'rgb(103, 183, 220)',
+    ]
+
+    var color2 = [
+        'rgb(103, 183, 220)',
+        'rgb(103, 183, 220)',
+        'rgb(103, 183, 220)',
+        'rgb(103, 183, 220)',
+        'rgb(103, 183, 220)',
+    ]
+
+    var ctx = document.getElementById('myChart1').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+
+        data: {
+            labels: ['HeK293T-VF', 'HeK293T-VEGF', 'HeK293T-DsRed', 'HeK293T-FGF-2', 'HeK293T-NTC'],
+            datasets: [
+                {
+                    data: [3629.683244371, 3530.029981648, 34.8935225829167, -35.1008634743333, 61.4848365394583,
+                    ],
+                    borderWidth: 1,
+                    backgroundColor: color1[0],
+                    borderColor: color2[0],
+                    errorBars: {
+                        'HeK293T-VF': {plus: 125.057736658045, minus: -125.057736658045},
+                        'HeK293T-VEGF': {plus: 291.154827574891, minus: -291.154827574891},
+                        'HeK293T-DsRed': {plus: 8.10455905559877, minus: -8.10455905559877},
+                        'HeK293T-FGF-2': {plus: 28.7233933109786, minus: -28.7233933109786},
+                        'HeK293T-NTC': {plus: 3.03245383972181, minus: -3.03245383972181},
+                    }
+                },
+            ]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    type: 'logarithmic',
+                    ticks: {
+                        beginAtZero: false,
+                    }
+                }]
+            },
+            title: {
+                display: true,
+                position: 'top',
+                text: ''
+            },
+            legend: {
+                display: false,
+                position: 'bottom',
+            },
+            plugins: {
+                chartJsPluginErrorBars: {
+                    width: '40%',
+                    color: 'darkgray'
+                }
+            }
+        }
+    });
+</script>
+</body>
+</html>
