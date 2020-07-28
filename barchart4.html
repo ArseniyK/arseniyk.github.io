@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <!-- Google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300" rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+    <script src="plugin.js"></script>
+    <style>
+        .chart{
+            width: 900px;
+            height: 500px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<div class="chart">
+<canvas id="myChart1" width="800" height="400"></canvas>
+</div>
+<div class="chart">
+<canvas id="myChart2" width="800" height="400"></canvas>
+</div>
+<div class="chart">
+<canvas id="myChart3" width="800" height="400"></canvas>
+</div>
+<script>
+    var color1 = [
+        'rgb(103, 183, 220)',
+        'rgb(103, 183, 220)',
+        'rgb(103, 183, 220)',
+        'rgb(103, 183, 220)',
+        'rgb(103, 183, 220)',
+    ]
+
+    var color2 = [
+        'rgb(103, 183, 220)',
+        'rgb(103, 183, 220)',
+        'rgb(103, 183, 220)',
+        'rgb(103, 183, 220)',
+        'rgb(103, 183, 220)',
+    ]
+
+    var ctx = document.getElementById('myChart1').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+
+        data: {
+            labels: ['pVax1-VEGF-FGF2-DsRed', 'pVax1-VEGF-DsRed', 'pVax1-FGF2-DsRed', 'pVax1-DsRed', 'NTC'],
+            datasets: [
+                {
+                    data: [
+                        21409,
+                        16640.3333333333,
+                        20150.3333333333,
+                        12456.6666666667,
+                        10524,
+                    ],
+                    errorBars: {
+                        'pVax1-VEGF-FGF2-DsRed': {plus: 2183.8143999281, minus: -2183.8143999281},
+                        'pVax1-VEGF-DsRed': {plus: 1297.52537975606, minus: -1297.52537975606},
+                        'pVax1-FGF2-DsRed': {plus: 1289.05460620479, minus: -1289.05460620479},
+                        'pVax1-DsRed': {plus: 1767.48355327882, minus: -1767.48355327882},
+                        'NTC': {plus: 1540.68339814945, minus: -1540.68339814945},
+                    },
+                    borderWidth: 1,
+                    backgroundColor: color1[0],
+                    borderColor: color2[0],
+                },
+            ]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true,
+                    }
+                }]
+            },
+            title: {
+                display: true,
+                position: 'top',
+                text: 'Длина формируемых трубок'
+            },
+            legend: {
+                display: false,
+                position: 'bottom',
+            },
+            plugins: {
+                chartJsPluginErrorBars: {
+                    width: '40%',
+                    color: '#808080'
+                }
+            }
+        }
+    });
+
+    var ctx = document.getElementById('myChart2').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['pVax1-VEGF-FGF2-DsRed', 'pVax1-VEGF-DsRed', 'pVax1-FGF2-DsRed', 'pVax1-DsRed', 'NTC'],
+            datasets: [
+                {
+                    data: [
+                        170.333333333333,
+                        139,
+                        154.333333333333,
+                        86.6666666666667,
+                        70,
+                    ],
+                    errorBars: {
+                        'pVax1-VEGF-FGF2-DsRed': {plus: 41.9536781595024, minus: -41.9536781595024},
+                        'pVax1-VEGF-DsRed': {plus: 15.3079500042734, minus: -15.3079500042734},
+                        'pVax1-FGF2-DsRed': {plus: 46.2829462233241, minus: -46.2829462233241},
+                        'pVax1-DsRed': {plus: 15.452435981999, minus: -15.452435981999},
+                        'NTC': {plus: 3.78593889720018, minus: -3.78593889720018},
+                    },
+                    borderWidth: 1,
+                    backgroundColor: color1[0],
+                    borderColor: color2[0],
+                },
+            ]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        max:250,
+                        beginAtZero: true
+                    }
+                }]
+            },
+            title: {
+                display: true,
+                position: 'top',
+                text: 'Количество формируемых узлов ветвления'
+            },
+            legend: {
+                display: false,
+                position: 'bottom',
+            },
+            plugins: {
+                chartJsPluginErrorBars: {
+                    width: '40%',
+                    color: '#808080'
+                }
+            }
+        }
+    });
+
+    var ctx = document.getElementById('myChart3').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['pVax1-VEGF-FGF2-DsRed', 'pVax1-VEGF-DsRed', 'pVax1-FGF2-DsRed', 'pVax1-DsRed', 'NTC'],
+            datasets: [
+                {
+                    data: [
+                        25.4666666666667,
+                        24.7333333333333,
+                        22.6,
+                        16.8333333333333,
+                        15.7333333333333,
+                    ],
+                    errorBars: {
+                        'pVax1-VEGF-FGF2-DsRed': {plus: 6.33333333333334, minus: -6.33333333333334},
+                        'pVax1-VEGF-DsRed': {plus: 1.3860415257528, minus: -1.3860415257528},
+                        'pVax1-FGF2-DsRed': {plus: 4.77214137817955, minus: -4.77214137817955},
+                        'pVax1-DsRed': {plus: 2.69649978882089, minus: -2.69649978882089},
+                        'NTC': {plus: 4.23530137980496, minus: -4.23530137980496},
+                    },
+                    borderWidth: 1,
+                    backgroundColor: color1[0],
+                    borderColor: color2[0],
+                },
+            ]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        max: 40,
+                        beginAtZero: true
+                    }
+                }]
+            },
+            title: {
+                display: true,
+                position: 'top',
+                text: 'Площадь покрытия клеток'
+            },
+            legend: {
+                display: false,
+                position: 'bottom',
+            },
+            plugins: {
+                chartJsPluginErrorBars: {
+                    width: '40%',
+                    color: '#808080'
+                }
+            }
+        }
+    });
+</script>
+</body>
+</html>
