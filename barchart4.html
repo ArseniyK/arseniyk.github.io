@@ -25,6 +25,9 @@
 <div class="chart">
 <canvas id="myChart3" width="1000" height="500"></canvas>
 </div>
+<div class="chart">
+<canvas id="myChart4" width="1000" height="500"></canvas>
+</div>
 <script>
     var color1 = [
         'rgb(103, 183, 220)',
@@ -192,6 +195,61 @@
                 display: true,
                 position: 'left',
                 text: 'Площадь покрытия клеток [%]',
+                fontSize: 18
+            },
+            legend: {
+                display: false,
+                position: 'bottom',
+            },
+            plugins: {
+                chartJsPluginErrorBars: {
+                    width: '40%',
+                    color: '#808080'
+                }
+            }
+        }
+    });
+
+    var ctx = document.getElementById('myChart4').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['pVax1-VEGF-FGF2-DsRed', 'pVax1-VEGF-DsRed', 'pVax1-FGF2-DsRed', 'pVax1-DsRed', 'NTC'],
+            datasets: [
+                {
+                    data: [
+                        64,
+                        44.25,
+                        69.6666666666667,
+                        20.3333333333333,
+                        11.3333333333333,
+                    ],
+                    errorBars: {
+                        'pVax1-VEGF-FGF2-DsRed': {plus: 16.391054470859, minus: 0},
+                        'pVax1-VEGF-DsRed': {plus: 6.00520607473216, minus: 0},
+                        'pVax1-FGF2-DsRed': {plus: 11.200198410941, minus: 0},
+                        'pVax1-DsRed': {plus: 7.12585277547732, minus: 0},
+                        'NTC': {plus: 2.185812841434, minus: 0},
+                    },
+                    borderWidth: 1,
+                    backgroundColor: color1[0],
+                    borderColor: color2[0],
+                },
+            ]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        max: 100,
+                        beginAtZero: true
+                    }
+                }]
+            },
+            title: {
+                display: true,
+                position: 'left',
+                text: 'Количество петель',
                 fontSize: 18
             },
             legend: {
