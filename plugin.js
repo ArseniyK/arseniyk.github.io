@@ -175,10 +175,9 @@
       ctx.moveTo(bar1.x, plus - up);
       ctx.lineTo(bar1.x, 25+i);
       ctx.lineTo(bar2.x, 25+i);
-
-      if (hex && bar1.x > bar2.x) {
+      if (hex !== '' && bar1.x > bar2.x) {
         ctx.font = 'normal 300 12pt serif';
-        ctx.strokeText('#',  (bar1.x+bar2.x)/2, 20+i)
+        ctx.strokeText(hex,  (bar1.x+bar2.x)/2, 20+i)
       }
 
 
@@ -266,12 +265,9 @@
             if (errorBar.g) {
               errorBar.g.forEach( function (g, i) {
                 if (g !== '') {
-                  var hex = g.startsWith('#');
-                  if (hex) {
-                    g = +g.split('#')[1]
-                  }
+                  var hex = g[0];
                   var h = chart.canvas.getBoundingClientRect().height;
-                  var bar2 = dataset[g];
+                  var bar2 = dataset[g[1]];
                   _this._drawGroup(ctx, bar, bar2, plus, errorBarColor, errorBarLineWidth, errorBarWidth, horizontal, p, h, i*50, hex);
                 }
 
