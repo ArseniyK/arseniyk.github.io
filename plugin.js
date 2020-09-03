@@ -166,7 +166,7 @@
       ctx.lineWidth = lineWidth;
       ctx.beginPath();
 
-      var up = 5;
+      var up = 25;
 
       if (p) {
         up = up + 50
