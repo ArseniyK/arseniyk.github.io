@@ -129,7 +129,7 @@
      * @param horizontal orientation
      * @private
      */
-    _drawErrorBar: function _drawErrorBar(ctx, model, plus, minus, color, lineWidth, width, horizontal) {
+    _drawErrorBar: function _drawErrorBar(ctx, model, plus, minus, color, lineWidth, width, horizontal, p) {
       ctx.save();
       ctx.lineWidth = lineWidth;
       ctx.strokeStyle = color;
@@ -144,11 +144,43 @@
         ctx.moveTo(plus, model.y - width / 2);
         ctx.lineTo(plus, model.y + width / 2);
       } else {
+        if (p) {
+          ctx.font = 'normal 300 12pt serif';
+          ctx.strokeText(p,  model.x-7, plus-25)
+        }
+
         ctx.moveTo(model.x - width / 2, plus);
         ctx.lineTo(model.x + width / 2, plus);
         ctx.moveTo(model.x, plus);
         ctx.lineTo(model.x, minus);
       }
+
+      ctx.stroke();
+      ctx.restore();
+    },
+
+    _drawGroup: function _drawGroup(ctx, bar1, bar2, plus, color, lineWidth, width, horizontal, p, h, i, hex) {
+      ctx.save();
+      ctx.lineWidth = lineWidth;
+      ctx.strokeStyle = color;
+      ctx.lineWidth = lineWidth;
+      ctx.beginPath();
+
+      var up = 5;
+
+      if (p) {
+        up = up + 50
+      }
+
+      ctx.moveTo(bar1.x, plus - up);
+      ctx.lineTo(bar1.x, 25+i);
+      ctx.lineTo(bar2.x, 25+i);
+
+      if (hex && bar1.x > bar2.x) {
+        ctx.font = 'normal 300 12pt serif';
+        ctx.strokeText('#',  (bar1.x+bar2.x)/2, 20+i)
+      }
+
 
       ctx.stroke();
       ctx.restore();
@@ -227,8 +259,26 @@
             var minusValue = options.absoluteValues ? errorBar.minus : value - Math.abs(errorBar.minus);
             var plus = vScale.getPixelForValue(plusValue);
             var minus = vScale.getPixelForValue(minusValue);
+            var p = errorBar.p;
 
-            _this._drawErrorBar(ctx, bar, plus, minus, errorBarColor, errorBarLineWidth, errorBarWidth, horizontal);
+            _this._drawErrorBar(ctx, bar, plus, minus, errorBarColor, errorBarLineWidth, errorBarWidth, horizontal, p);
+
+            if (errorBar.g) {
+              errorBar.g.forEach( function (g, i) {
+                if (g !== '') {
+                  var hex = g.startsWith('#');
+                  if (hex) {
+                    g = +g.split('#')[1]
+                  }
+                  var h = chart.canvas.getBoundingClientRect().height;
+                  var bar2 = dataset[g];
+                  _this._drawGroup(ctx, bar, bar2, plus, errorBarColor, errorBarLineWidth, errorBarWidth, horizontal, p, h, i*50, hex);
+                }
+
+              })
+
+            }
+
           });
         });
       });
