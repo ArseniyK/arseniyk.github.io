@@ -43,7 +43,7 @@ var data = [
     },
     {
       "axis": "IL-12(p70)",
-      "value": 241.46
+      "value": 1.46
     },
     {
       "axis": "IL-13",
@@ -154,7 +154,7 @@ var data = [
     },
     {
       "axis": "IL-12(p70)",
-      "value": 242.63
+      "value": 2.63
     },
     {
       "axis": "IL-13",
