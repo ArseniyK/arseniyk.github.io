@@ -145,8 +145,8 @@
         ctx.lineTo(plus, model.y + width / 2);
       } else {
         if (p) {
-          ctx.font = 'normal 300 12pt serif';
-          ctx.strokeText(p,  model.x-7, plus-25)
+          ctx.font = 'normal 300 16pt serif';
+          ctx.fillText(p,  model.x-7, plus-25)
         }
 
         ctx.moveTo(model.x - width / 2, plus);
@@ -176,8 +176,8 @@
       ctx.lineTo(bar1.x, 25+i);
       ctx.lineTo(bar2.x, 25+i);
       if (hex !== '' && bar1.x > bar2.x) {
-        ctx.font = 'normal 300 12pt serif';
-        ctx.strokeText(hex,  (bar1.x+bar2.x)/2, 20+i)
+        ctx.font = 'normal 300 16pt serif';
+        ctx.fillText(hex,  (bar1.x+bar2.x)/2, 20+i)
       }
 
 
