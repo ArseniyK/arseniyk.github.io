@@ -30,20 +30,22 @@
 </div>
 <script>
     var color1 = [
-        'rgb(103, 183, 220)',
-        'rgb(103, 183, 220)',
+        'rgb(50, 50, 50)',
+        'rgb(100, 100, 100)',
         'rgb(103, 183, 220)',
         'rgb(103, 183, 220)',
         'rgb(103, 183, 220)',
     ]
 
     var color2 = [
-        'rgb(103, 183, 220)',
-        'rgb(103, 183, 220)',
+        'rgb(50, 50, 50)',
+        'rgb(100, 100, 100)',
         'rgb(103, 183, 220)',
         'rgb(103, 183, 220)',
         'rgb(103, 183, 220)',
     ]
+
+    Chart.defaults.global.defaultFontColor = 'black';
 
     var ctx = document.getElementById('myChart1').getContext('2d');
     var myChart = new Chart(ctx, {
@@ -70,6 +72,7 @@
                     borderWidth: 1,
                     backgroundColor: color1[0],
                     borderColor: color2[0],
+                    barPercentage: 0.5,
                 },
             ]
         },
@@ -125,6 +128,7 @@
                     borderWidth: 1,
                     backgroundColor: color1[0],
                     borderColor: color2[0],
+                    barPercentage: 0.5,
                 },
             ]
         },
@@ -180,6 +184,7 @@
                     borderWidth: 1,
                     backgroundColor: color1[0],
                     borderColor: color2[0],
+                    barPercentage: 0.5,
                 },
             ]
         },
@@ -235,6 +240,7 @@
                     borderWidth: 1,
                     backgroundColor: color1[0],
                     borderColor: color2[0],
+                    barPercentage: 0.5,
                 },
             ]
         },

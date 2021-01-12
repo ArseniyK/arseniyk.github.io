@@ -28,20 +28,22 @@
 </div>
 <script>
     var color1 = [
-        'rgba(155, 93, 229, 1)',
-        'rgb(103, 183, 220)',
+        'rgb(50, 50, 50)',
+        'rgb(100, 100, 100)',
         'rgb(103, 183, 220)',
         'rgb(103, 183, 220)',
         'rgb(103, 183, 220)',
     ]
 
     var color2 = [
-        'rgba(155, 93, 229, 1)',
-        'rgb(103, 183, 220)',
+        'rgb(50, 50, 50)',
+        'rgb(100, 100, 100)',
         'rgb(103, 183, 220)',
         'rgb(103, 183, 220)',
         'rgb(103, 183, 220)',
     ]
+
+    Chart.defaults.global.defaultFontColor = 'black';
 
     var ctx = document.getElementById('myChart1').getContext('2d');
     var myChart = new Chart(ctx, {
@@ -62,6 +64,7 @@
                     borderWidth: 1,
                     backgroundColor: color1[0],
                     borderColor: color2[0],
+                    barPercentage: 0.5,
                     errorBars: {
                         'HeK293T-VF': {plus: 125.057736658045, minus: 0},
                         'HeK293T-VEGF': {plus: 291.154827574891, minus: 0},
@@ -82,6 +85,7 @@
                     borderWidth: 1,
                     backgroundColor: color1[1],
                     borderColor: color2[1],
+                    barPercentage: 0.5,
                     errorBars: {
                         'HeK293T-VF': {plus: 446.748808185095, minus: 0},
                         'HeK293T-VEGF': {plus: 25.938739580333, minus: 0},
