@@ -92,7 +92,7 @@ function RadarChart(id, data, options, groups) {
 
 
 	// add groups
-	var groupRadius = 370;
+	var groupRadius = rScale(maxValue * cfg.labelFactor)+50;
 	var segments = data[0].length;
 	var groupLength = 2 * Math.PI * groupRadius;
 	var segmentLength = groupLength / segments;
