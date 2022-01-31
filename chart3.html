@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"
+    / >
+    <title></title>
+
+    <!-- Google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:700,400,300" rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+
+    <!-- D3.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
+
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 16px;
+            font-weight: 300;
+            text-align: center;
+            cursor: default;
+        }
+
+        .legend {
+            font-family: 'Raleway', sans-serif;
+        }
+
+        .brick {
+            width: 15px;
+            height: 15px;
+            margin-right: 10px;
+        }
+
+        .legends {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            margin: 0 auto;
+            width: 700px;
+        }
+
+        .row {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+    </style>
+
+</head>
+<body>
+<div class="radarChart"></div>
+<div class="legends">
+    <div class="row">
+        <div class="brick" style="background-color: #f94144"></div>
+        <div>Среда NTC</div>
+    </div>
+    <div class="row">
+        <div class="brick" style="background-color: #277da1"></div>
+        <div>Лизаты NTC</div>
+    </div>
+</div>
+
+<script src="radarChart2.js"></script>
+<script src="data4.js"></script>
+<script>
+
+    /* Radar chart design created by Nadieh Bremer - VisualCinnamon.com */
+
+    //////////////////////////////////////////////////////////////
+    //////////////////////// Set-Up //////////////////////////////
+    //////////////////////////////////////////////////////////////
+
+    var margin = {top: 100, right: 100, bottom: 100, left: 100},
+        width = Math.min(900, window.innerWidth - 10) - margin.left - margin.right,
+        height = Math.min(width, window.innerHeight - margin.top - margin.bottom - 20);
+
+    //////////////////////////////////////////////////////////////
+    //////////////////// Draw the Chart //////////////////////////
+    //////////////////////////////////////////////////////////////
+
+    var colors = [
+        "#277da1",
+        "#f94144",
+        "#f9c74f",
+        "#577590",
+        "#f3722c",
+        "#90be6d",
+    ];
+
+    var color = d3.scale.ordinal().range(colors);
+
+    var radarChartOptions = {
+        w: width,
+        h: height,
+        labelFactor: 5,
+        margin: margin,
+        maxValue: 100000,
+        minValue: 0.01,
+        roundStrokes: false,
+        opacityCircles: .2,
+        opacityArea: .75,
+        color: color
+    };
+    var groups = [
+        9, 11, 11, 2, 5, 3
+    ]
+    //Call function to draw the Radar chart
+    RadarChart(".radarChart", data, radarChartOptions, groups);
+</script>
+</body>
+</html>
